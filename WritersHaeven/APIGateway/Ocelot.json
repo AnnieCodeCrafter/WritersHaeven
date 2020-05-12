@@ -1,3 +1,7 @@
 {
-
+  "ReRoutes": [],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://api.mybusiness.com"
+  }
 }
+
