@@ -5,10 +5,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './component/nav-menu/nav-menu.component';
-import { HomeComponent } from './component/home/home.component';
-import { CounterComponent } from './component/counter/counter.component';
-import { FetchDataComponent } from './component/fetch-data/fetch-data.component';
+import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
+import { HomeComponent } from './components/home/home.component';
+import { CounterComponent } from './components/counter/counter.component';
+import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FetchDataComponent } from './component/fetch-data/fetch-data.component'
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -26,6 +28,7 @@ import { FetchDataComponent } from './component/fetch-data/fetch-data.component'
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'login', component: LoginComponent}
     ])
   ],
   providers: [],

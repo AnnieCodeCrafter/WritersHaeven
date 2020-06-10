@@ -17,6 +17,22 @@ namespace LoginService.Context
 
         }
 
+        protected override void OnModelCreating(ModelBuilder model)
+        {
+            model.Entity<Account>().HasData(new Account
+                {
+                    UserId = 1,
+                    Name = "boo",
+                    PssWord = "beep"
+                }, new Account
+                {
+                    UserId = 2,
+                    Name = "blep",
+                    PssWord = "bleep"
+                });
+        }
+
+
         // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         // {
         //

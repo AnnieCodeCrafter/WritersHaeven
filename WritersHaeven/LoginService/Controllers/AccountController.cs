@@ -6,6 +6,7 @@ using LoginService.Context;
 using LoginService.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace LoginService.Controllers
@@ -26,7 +27,9 @@ namespace LoginService.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Account>>> getAccounts()
         {
-            return await _context.Accounts.ToListAsync();
+            
+                return await _context.Accounts.ToListAsync();
+                
         }
 
         //POST: api/account
@@ -39,7 +42,7 @@ namespace LoginService.Controllers
             return CreatedAtAction("GetAccount", new {id = account.UserId}, account);
         }
 
-        //GET: api/getaccount/{id}
+        //GET: api/account/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<Account>> GetAccount(int id)
         {
@@ -52,6 +55,8 @@ namespace LoginService.Controllers
 
             return account;
         }
+
+        
 
 
 

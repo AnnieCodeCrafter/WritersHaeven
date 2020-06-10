@@ -16,6 +16,8 @@ namespace LoginService.Models
         public string Name { get; set; }
         public string PssWord { get; set; }
 
+        public string Hello { get; set; }
+
         // public Account( string name, string pssword)
         // {
         //  
