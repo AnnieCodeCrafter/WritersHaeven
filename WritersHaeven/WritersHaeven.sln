@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WritersHaeven", "WritersHaeven\WritersHaeven.csproj", "{796FD65D-EA11-4CB5-B4E2-09E163410409}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{11DC9C3F-CA35-4CC2-BF74-E89E9BDCC90D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{1878169F-10FC-4798-91B3-E3A0FA603FCB}"
@@ -17,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoginService", "LoginServic
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{A9FBA889-FC71-4FB9-896E-90999BF51DEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WritersAngular", "WritersAngular\WritersAngular.csproj", "{2D5FD505-A0CC-4337-BED8-23380CAAA273}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WritersAngular", "WritersAngular\WritersAngular.csproj", "{2D5FD505-A0CC-4337-BED8-23380CAAA273}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{796FD65D-EA11-4CB5-B4E2-09E163410409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{796FD65D-EA11-4CB5-B4E2-09E163410409}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{796FD65D-EA11-4CB5-B4E2-09E163410409}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{796FD65D-EA11-4CB5-B4E2-09E163410409}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A5477B04-1D12-484C-8A10-C9B1791499A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A5477B04-1D12-484C-8A10-C9B1791499A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5477B04-1D12-484C-8A10-C9B1791499A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -46,7 +40,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{796FD65D-EA11-4CB5-B4E2-09E163410409} = {11DC9C3F-CA35-4CC2-BF74-E89E9BDCC90D}
 		{A5477B04-1D12-484C-8A10-C9B1791499A9} = {1CC43A24-554A-4E36-AB84-88449C1CE3E7}
 		{1CC43A24-554A-4E36-AB84-88449C1CE3E7} = {1878169F-10FC-4798-91B3-E3A0FA603FCB}
 		{09B3AEE8-F7C5-4F32-AEA0-250E27F4DADB} = {A9FBA889-FC71-4FB9-896E-90999BF51DEE}
