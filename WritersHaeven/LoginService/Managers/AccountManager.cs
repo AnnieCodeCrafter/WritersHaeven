@@ -30,7 +30,7 @@ namespace LoginService.Managers
 
         public Account Get(int id)
         {
-            return accountContext.Accounts.FirstOrDefault(e => e.UserId == id);
+            return accountContext.Accounts.FirstOrDefault(e => Convert.ToInt32(e.UserId) == id);
         }
 
         public IEnumerable<Account> GetAll()

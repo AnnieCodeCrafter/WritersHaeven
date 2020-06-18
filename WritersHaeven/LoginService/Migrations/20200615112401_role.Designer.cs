@@ -3,14 +3,16 @@ using LoginService.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LoginService.Migrations
 {
     [DbContext(typeof(AccountContext))]
-    partial class AccountContextModelSnapshot : ModelSnapshot
+    [Migration("20200615112401_role")]
+    partial class role
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,38 +49,6 @@ namespace LoginService.Migrations
                             UserId = 2,
                             Name = "blep",
                             PssWord = "bleep"
-                        });
-                });
-
-            modelBuilder.Entity("LoginService.Models.Role", b =>
-                {
-                    b.Property<int>("RoleId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("IdentityId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("RoleId");
-
-                    b.ToTable("Role");
-
-                    b.HasData(
-                        new
-                        {
-                            RoleId = 1,
-                            IdentityId = 1,
-                            Name = "Admin"
-                        },
-                        new
-                        {
-                            RoleId = 2,
-                            IdentityId = 2,
-                            Name = "User"
                         });
                 });
 #pragma warning restore 612, 618
