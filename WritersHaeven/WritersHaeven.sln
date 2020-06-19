@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{A9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WritersAngular", "WritersAngular\WritersAngular.csproj", "{2D5FD505-A0CC-4337-BED8-23380CAAA273}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoryService", "StoryService\StoryService.csproj", "{EC24F0DD-5B14-4D15-A46E-B7382FF79482}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{2D5FD505-A0CC-4337-BED8-23380CAAA273}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D5FD505-A0CC-4337-BED8-23380CAAA273}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D5FD505-A0CC-4337-BED8-23380CAAA273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC24F0DD-5B14-4D15-A46E-B7382FF79482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC24F0DD-5B14-4D15-A46E-B7382FF79482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC24F0DD-5B14-4D15-A46E-B7382FF79482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC24F0DD-5B14-4D15-A46E-B7382FF79482}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +51,7 @@ Global
 		{09B3AEE8-F7C5-4F32-AEA0-250E27F4DADB} = {A9FBA889-FC71-4FB9-896E-90999BF51DEE}
 		{A9FBA889-FC71-4FB9-896E-90999BF51DEE} = {1878169F-10FC-4798-91B3-E3A0FA603FCB}
 		{2D5FD505-A0CC-4337-BED8-23380CAAA273} = {11DC9C3F-CA35-4CC2-BF74-E89E9BDCC90D}
+		{EC24F0DD-5B14-4D15-A46E-B7382FF79482} = {A9FBA889-FC71-4FB9-896E-90999BF51DEE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CF15F15A-9C27-4EF9-A7D3-9B0AA615CB42}

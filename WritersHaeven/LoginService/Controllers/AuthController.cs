@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using LoginService.Models;
 using Microsoft.EntityFrameworkCore.Update;
 using LoginService.Auth;
+using LoginService.Managers;
 
 namespace LoginService.Controllers
 {
@@ -18,13 +19,13 @@ namespace LoginService.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly AccountContext _context;
+        private readonly MongoAccountManager _context;
         private readonly UserManager<Account> _accountManager;
         private readonly IJwtFactory _jwtFactory;
         private readonly JwtIssuerOptions _jwtOptions;
         private readonly JsonSerializerSettings _serializerSettings;
 
-        public AuthController(AccountContext context, UserManager<Account> accountManager, IJwtFactory jwtFactory, JwtIssuerOptions jwtOptions, JsonSerializerSettings serializerSettings)
+        public AuthController(MongoAccountManager context, UserManager<Account> accountManager, IJwtFactory jwtFactory, JwtIssuerOptions jwtOptions, JsonSerializerSettings serializerSettings)
         {
             _context = context;
             _jwtFactory = jwtFactory;
@@ -34,7 +35,7 @@ namespace LoginService.Controllers
         }
 
         //POST: api/auth
-        [HttpPost("login")]
+ /*       [HttpPost("login")]
         public async Task<IActionResult> Login(AccountViewModel account) 
         {
             if (!ModelState.IsValid)
@@ -84,7 +85,7 @@ namespace LoginService.Controllers
 
             // Credentials are invalid, or account doesn't exist
             return await Task.FromResult<ClaimsIdentity>(null);
-        }
+        } */
 
     }
 
