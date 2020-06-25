@@ -4,6 +4,7 @@ import {
   Validators, ReactiveFormsModule
 } from '@angular/forms';
 import { LoginService } from '../../services/login/login.service';
+import { Account } from './../../models/account';
 
 
 @Component({
@@ -11,7 +12,12 @@ import { LoginService } from '../../services/login/login.service';
   templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
+
+  account: Account
+
+
   ngOnInit(): void {
+  
      
   }
 
@@ -19,9 +25,13 @@ export class LoginComponent implements OnInit {
    
   }
   
-  submit(username: String, password:String) {
+  submit(username: string, password:string) {
     console.log(username, password);
-    //this.loginService.
+    if (username != null && password != null) {
+      this.account = new Account(username, password);
+      this.loginService.login(this.account);
+    }
+
 
   }
   

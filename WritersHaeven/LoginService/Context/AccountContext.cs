@@ -60,7 +60,7 @@ namespace LoginService.Context
         //         @"Server = mssql.fhict.local; Database = dbi364679_hvnaccount; User Id = dbi364679; Password = Haeven2020;");
         // }
 
-        public System.Data.Entity.DbSet<Role> Roles { get; set; }
+       
      
         public Microsoft.EntityFrameworkCore.DbSet<Account> Accounts { get; set; }
     }

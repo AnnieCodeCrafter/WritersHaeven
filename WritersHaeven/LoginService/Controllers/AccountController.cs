@@ -21,6 +21,7 @@ namespace LoginService.Controllers
     public class AccountController : ControllerBase
     {
 
+        //rabbitMQ
         private static string url = ConfigurationManager.AppSettings["CLOUDAMQP_URL"];
         //  static readonly ConnectionFactory connFactory = new ConnectionFactory();
         ConnectionFactory factory = new ConnectionFactory
@@ -30,7 +31,7 @@ namespace LoginService.Controllers
         };
     
         
-
+        //mongoDB
         private readonly MongoAccountManager _context;
 
         public AccountController(MongoAccountManager context)
@@ -72,11 +73,11 @@ namespace LoginService.Controllers
 
         //GET: api/account/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult<Account>> GetAccount(int id)
+        public async Task<ActionResult<Account>> GetAccount(string username)
         {
 
 
-            var account = await Task.FromResult(_context.Get(id));
+            var account = await Task.FromResult(_context.Get(username));
 
             if (account == null)
             {

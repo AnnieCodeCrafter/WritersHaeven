@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using LoginService.Context;
 ///using LoginService.Migrations;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Identity;
+
 using Newtonsoft.Json;
 using LoginService.Models;
 using Microsoft.EntityFrameworkCore.Update;
 using LoginService.Auth;
 using LoginService.Managers;
+using System.Configuration;
+using MongoDB.Bson;
 
 namespace LoginService.Controllers
 {
@@ -20,76 +22,107 @@ namespace LoginService.Controllers
     public class AuthController : ControllerBase
     {
         private readonly MongoAccountManager _context;
-        private readonly UserManager<Account> _accountManager;
-        private readonly IJwtFactory _jwtFactory;
-        private readonly JwtIssuerOptions _jwtOptions;
-        private readonly JsonSerializerSettings _serializerSettings;
+        //  private readonly UserManager<Account> _accountManager;
+        /*   private readonly IJwtFactory _jwtFactory;
+           private readonly JwtIssuerOptions _jwtOptions;
+           private readonly JsonSerializerSettings _serializerSettings; */
 
-        public AuthController(MongoAccountManager context, UserManager<Account> accountManager, IJwtFactory jwtFactory, JwtIssuerOptions jwtOptions, JsonSerializerSettings serializerSettings)
+        public AuthController(MongoAccountManager context)
         {
             _context = context;
-            _jwtFactory = jwtFactory;
-            _accountManager = accountManager;
-            _jwtOptions = jwtOptions;
-            _serializerSettings = serializerSettings;
+            /*  _jwtFactory = jwtFactory;
+              //_accountManager = accountManager;
+              _jwtOptions = jwtOptions;
+              _serializerSettings = serializerSettings;*/
         }
 
-        //POST: api/auth
- /*       [HttpPost("login")]
-        public async Task<IActionResult> Login(AccountViewModel account) 
+
+
+
+        //POST: api/auth/login
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(AccountViewModel account)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var identity = await GetClaimsIdentity(account.Username, account.Password);
-            if (identity == null)
+            Account userToVerify = await Task.FromResult(_context.Get(account.Username));
+            if (userToVerify != null && userToVerify.PssWord == account.Password)
+            {
+                return new OkObjectResult("You have been logged in.");
+            }
+
+
+            return NotFound();
+
+        }
+
+       //api/auth/register
+        [HttpPost("register")]
+        public async Task<IActionResult> Account([FromBody]Account account)
+        {
+            //check if valid
+            if (!ModelState.IsValid && account != null)
             {
                 return BadRequest(ModelState);
             }
 
-            // Serialize and return the response
-            var response = new
+            //check if username already exists
+            Account userToVerify = await Task.FromResult(_context.Get(account.Name));
+            if(userToVerify == null)
             {
-                id = identity.Claims.Single(c => c.Type == "id").Value,
-                auth_token = await _jwtFactory.GenerateEncodedToken(account.Username, identity),
-                expires_in = (int)_jwtOptions.ValidFor.TotalSeconds,
-                role = identity.Claims.Single(c => c.Type == "role").Value
-            };
-
-            var json = JsonConvert.SerializeObject(response, _serializerSettings);
-            return new OkObjectResult(json);
-        }
-
-        private async Task<ClaimsIdentity> GetClaimsIdentity(string username, string password)
-        {
-            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
-            {
-                // get the user to verifty
-                var userToVerify = await _accountManager.FindByNameAsync(username);
-
-                if (userToVerify != null)
-                {
-                    // check the credentials  
-                    if (await _accountManager.CheckPasswordAsync(userToVerify, password))
-                    {
-                        Role role = _context.Roles.FirstOrDefault(r => r.IdentityId==Convert.ToInt32(userToVerify.UserId));
-                        return await Task.FromResult(_jwtFactory.GenerateClaimsIdentity(username, userToVerify.UserId.ToString(), role.Name));
-
-
-
-                    }
-                }
+                await Task.FromResult(_context.Create(account));
+                return new OkObjectResult("Account created");
             }
 
-            // Credentials are invalid, or account doesn't exist
-            return await Task.FromResult<ClaimsIdentity>(null);
-        } */
+            return NotFound();
+
+        }
+
+
+        //api/auth get
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Account>>> getAuthAccount()
+        {
+
+            return await Task.FromResult(_context.Get());
+
+        }
+
+
+        /*     private async Task<ClaimsIdentity> GetClaimsIdentity(string username, string password)
+             {
+                 if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
+                 {
+                     // get the user to verifty
+                     Account userToVerify = await Task.FromResult(_context.Get(username));
+
+                     if (userToVerify != null)
+                     {
+                         // check the credentials  
+                         if (await Task.FromResult(CheckPassword(userToVerify, password)))
+                         {
+
+                      //return await Task.FromResult(_jwtFactory.GenerateClaimsIdentity(username, userToVerify.UserId.ToString(), true));
+
+                         ]
+
+                         }
+                     }
+                 }
+
+                 // Credentials are invalid, or account doesn't exist
+                 return await Task.FromResult<ClaimsIdentity>(null);
+             }*/
+
+
+
 
     }
 
 
 
-    
+
 }

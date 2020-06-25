@@ -7,9 +7,8 @@ using System.Linq;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System.Threading.Tasks;
-using MongoDB.Driver.Core.Authentication;
 
-namespace LoginService.Models
+namespace StoryService.Models
 {
     [BsonIgnoreExtraElements]
     public class Account 

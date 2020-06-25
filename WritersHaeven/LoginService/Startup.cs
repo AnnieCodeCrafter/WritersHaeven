@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LoginService.Auth;
 using LoginService.Context;
 using LoginService.Managers;
 using LoginService.Models;
@@ -31,8 +32,16 @@ namespace LoginService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           // services.AddDbContext<AccountContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:AccountDB"]));
-           // services.AddScoped<IDataRepository<Account>, AccountManager>();
+            // services.AddDbContext<AccountContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:AccountDB"]));
+            // services.AddScoped<IDataRepository<Account>, AccountManager>();
+
+     /*       services.AddScoped<IJwtFactory, JwtFactory>();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("admin", policy => policy.RequireClaim(Helpers.Constants.Strings.JwtClaimIdentifiers.Role, Helpers.Constants.Strings.JwtClaims.AdminAccess));
+                options.AddPolicy("user", policy => policy.RequireClaim(Helpers.Constants.Strings.JwtClaimIdentifiers.Role, Helpers.Constants.Strings.JwtClaims.UserAccess));
+
+            });*/
 
             services.Configure<AccountDatabaseSettings>(
        Configuration.GetSection(nameof(AccountDatabaseSettings)));

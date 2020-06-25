@@ -21,22 +21,21 @@ namespace LoginService.Auth
 
 
        
-        public ClaimsIdentity GenerateClaimsIdentity(string userName, string id, string role)
+        public ClaimsIdentity GenerateClaimsIdentity(string userName, string id, bool role)
         {
             string claim;
+
+
             switch (role)
             {
-                case "user":
+                case false:
                     claim = Helpers.Constants.Strings.JwtClaims.UserAccess;
                     break;
               
-                case "admin":
+                case true:
                     claim = Helpers.Constants.Strings.JwtClaims.AdminAccess;
                     break;
-                default:
-                    claim = Helpers.Constants.Strings.JwtClaims.ApiAccess;
-                    break;
-            }
+                            }
             return new ClaimsIdentity(new GenericIdentity(userName, "Token"), new[]
             {
                 new Claim(Helpers.Constants.Strings.JwtClaimIdentifiers.Id, id),

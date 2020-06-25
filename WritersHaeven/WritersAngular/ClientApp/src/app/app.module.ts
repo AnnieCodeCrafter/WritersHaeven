@@ -15,6 +15,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 import { LoginComponent } from './components/login/login.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,9 @@ import { LoginComponent } from './components/login/login.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'login', component: LoginComponent}
+      { path: 'login', component: LoginComponent },
+      
+      
     ])
   ],
   providers: [],

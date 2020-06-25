@@ -25,8 +25,8 @@ namespace LoginService.Managers
         public List<Account> Get() =>
             _account.Find(account => true).ToList();
 
-        public Account Get(int id) =>
-            _account.Find(account => Convert.ToInt32(account.UserId) == id).FirstOrDefault();
+        public Account Get(string username) =>
+            _account.Find(account => account.Name == username).FirstOrDefault();
 
         public Account Create(Account account)
         {
@@ -34,13 +34,13 @@ namespace LoginService.Managers
             return account;
         }
 
-        public void Update(int id, Account accountIn) =>
-            _account.ReplaceOne(account => Convert.ToInt32(account.UserId) == id, accountIn);
+        public void Update(string username, Account accountIn) =>
+            _account.ReplaceOne(account => account.Name == username, accountIn);
 
         public void Remove(Account accountIn) =>
             _account.DeleteOne(account => account.UserId == accountIn.UserId);
 
-        public void Remove(int id) =>
-            _account.DeleteOne(a => Convert.ToInt32(a.UserId) == id);
+        public void Remove(string username) =>
+            _account.DeleteOne(a => a.Name == username);
     }
 }
